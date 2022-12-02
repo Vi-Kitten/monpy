@@ -46,7 +46,7 @@ The library also includes some helper functions:
 - `flatten` Simplifies nested monads using type checking.
 
 
-## about "Do"
+## About "Do"
 The `Do` type exists to represent the state of a procedure as a wrapped dictionaty with an overloaded `__getattribute__` method to make `do` syntax clean.
 
 `.do` will retrieve the dictionary itself.

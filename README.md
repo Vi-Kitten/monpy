@@ -3,7 +3,7 @@ Monad decorators mini-lib for python.
 
 Bringing simple functional programming to python.
 
-## example
+## Example
 In this example a `do` block is used to remove the need for nested `if` statements.
 ```py
 Maybe.do(
@@ -12,36 +12,34 @@ Maybe.do(
     z = lambda s: may_also_fail(s.x, s.y)
 ).map(lambda s: s.z) # return z
 ```
+For more examples see [example.py](./example.py).
 
-## decorations
+## Decorations
 Each decorator in order expects that the previous one has been applied and that all the qualifications are met:
 
-### functor
 `@functor`:
-- **expects** `obj.map` Impliments functor map funcitonality.
-- **provides** `cls.mmap` Refactors a function to map through successive layers of a functor.
+- **expects** `obj.map`: Impliments functor map funcitonality.
+- **provides** `cls.mmap`: Refactors a function to map through successive layers of a functor.
 
-### applicative
 `@applicative`:
-- **expects** `cls.wrap` Trivially constructs a "singleton" instance.
-- **expects** `obj.apply` Combines a wrapped function to a wrapped value to produce a wrapped result.
-- **provides** `cls.lift` Refactors a function to map through successive layers of a functor.
+- **expects** `cls.wrap`: Trivially constructs a "singleton" instance.
+- **expects** `obj.apply`: Combines a wrapped function to a wrapped value to produce a wrapped result.
+- **provides** `cls.lift`: Refactors a function to map through successive layers of a functor.
 
-### monad
 `@monad`:
-- **expects** `obj.bind` Generalisation of flatmap.
-- **provides** `cls.do` Constructs a do block (like in Haskell) using an ordered dictionary of lambdas from state to wrapped value.
-- **provides** `cls.loop` Constructs a recursive do block using an ordered dictionary of lambdas from state to wrapped value that only runs whilst the predicate is true.
+- **expects** `obj.bind`: Generalisation of flatmap.
+- **provides** `cls.do`: Constructs a do block (like in Haskell) using an ordered dictionary of lambdas from state to wrapped value.
+- **provides** `cls.loop`: Constructs a recursive do block using an ordered dictionary of lambdas from state to wrapped value that only runs whilst the predicate is true.
 
-## types
+## Types
 The library comes with a handful of monad types:
-- `Box` for simple wrapping.
-- `Maybe` for optional values.
-- `Many` for multiple values.
-- `Func` for lambdas.
-- `Async` for asyncronous lambdas.
+- `Box` For simple wrapping.
+- `Maybe` For optional values.
+- `Many` For multiple values.
+- `Func` For lambdas.
+- `Async` For asyncronous lambdas.
 
-## helpers
+## Helpers
 The library also includes some helper functions:
 - `curry` Seperates positional arguments into seperate calls.
 - `un_curry` Inverts `curry`.
